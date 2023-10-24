@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+}
+.header{
+    width: 100%;
+    padding-top:1rem ;
+    height: 7rem;
+    text-align: center;
+    background-color: #1495a9;
+    font-size: larger;
+}
+button,a{
+    width: 8rem;
+    height: 3rem;
+    border-radius: 5px;
+    margin: auto;
+    background-color:#009879;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 50rem;
+    padding-left:1rem;
+    text-decoration: none;
+}
+.wrapper{
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem auto;
+    background-image:url('photos/inside.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 82vh;
+}
+.leftSide{
+flex: 1;
+display: flex;
+justify-content: space-around;
+flex-direction: column;
+padding-left: 10rem;
+line-height: 3rem;
+}
+.rightSide{
+    flex:1;
+    display: flex;
+justify-content: space-around;
+flex-direction: column;
+padding-left: 10rem;
+line-height: 3rem;
+}

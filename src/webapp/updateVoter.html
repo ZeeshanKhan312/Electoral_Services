@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="task.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Update Voter</div>
+    <div class="content">
+      <form ><br>
+          <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1">
+          <input type="radio" name="gender" id="dot-2">
+          <input type="radio" name="gender" id="dot-3">
+          <span class="gender-title">Select What You Want To Update</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Address</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Contact Number</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Date Of Birth</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- YAHAN SE MAIN CODE H UPAR WALA 
+        AISE HI RADIO BUTTON BANA RAKHA H -->
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Address</span>
+            <input id="update-address" type="text" placeholder="Enter voter address" >
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input id="update-number" type="text" placeholder="Enter voter contact number" >
+          </div>
+          <div class="input-box">
+            <span class="details">Date of Birth</span>
+            <input id="update-dob" type="date" placeholder="Enter voter date of birth" >
+          </div>
+        </div>
+        <div class="button">
+          <input id="submit-btn" type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="./scripts/updateVoter.js"></script>
+</body>
+</html>
