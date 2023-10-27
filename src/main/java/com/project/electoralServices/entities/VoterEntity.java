@@ -25,6 +25,7 @@ public class VoterEntity {
     @NonNull
     private int voterAge;
     @NonNull
+    @Column(unique = true)
     private String aadharNo;
     @NonNull
     private String address;
