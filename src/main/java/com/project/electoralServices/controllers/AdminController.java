@@ -1,7 +1,9 @@
 package com.project.electoralServices.controllers;
 
+import com.project.electoralServices.entities.AdminEntity;
 import com.project.electoralServices.entities.CandidateEntity;
 import com.project.electoralServices.entities.VoterEntity;
+import com.project.electoralServices.entities.VotingResult;
 import com.project.electoralServices.services.AdminServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,20 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private AdminServices adminServices;
+
+    @PostMapping("/add-admin")
+    public void addAdmin(@RequestBody AdminEntity admin){
+        adminServices.addAdmin(admin);
+    }
+    @GetMapping("/admin-list")
+    public List<AdminEntity> adminList(){
+        return adminServices.adminList();
+    }
+
+    @GetMapping("/admin-login")
+    public AdminEntity adminLogin(@RequestParam String userName, @RequestParam String pasw){
+        return adminServices.adminLogin(userName, pasw);
+    }
 
     @GetMapping("/voter-list")
     public List<VoterEntity> voterList(){
@@ -52,8 +68,8 @@ public class AdminController {
         adminServices.deleteCandidate(candidateId);
     }
 
-//    @GetMapping("/voting-count")
-//    public List<> votingCount(){
-//        return adminServices.votingCount();
-//    }
+    @GetMapping("/voting-count")
+    public List<VotingResult> votingCount(){
+        return adminServices.votingCount();
+    }
 }

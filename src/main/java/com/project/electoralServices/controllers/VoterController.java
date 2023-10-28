@@ -1,12 +1,33 @@
 package com.project.electoralServices.controllers;
 
-
+import com.project.electoralServices.entities.VoterEntity;
+import com.project.electoralServices.entities.VotingResult;
 import com.project.electoralServices.services.VoterServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
+@RequestMapping("/voter")
 public class VoterController {
     @Autowired
     private VoterServices voterServices;
+
+    @GetMapping("/voter-login")
+    public VoterEntity voterLogin(@RequestParam int voterId, @RequestParam String pasw){
+        return voterServices.voterLogin(voterId,pasw);
+    }
+    @PutMapping("/cast-vote")
+    public void castVote(@RequestParam int voterId, @RequestParam Boolean voteCasted, @RequestParam String candidateName){
+
+    }
+    @PutMapping("/update-details")
+    public void updateVoterDetails(@RequestParam String updateType, @RequestParam String update){
+
+    }
+    @GetMapping("/voting-result")
+    public List<VotingResult> getVotingResult(){
+        return voterServices.getVotingResult();
+    }
+
 }

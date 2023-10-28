@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface VoterRepository extends JpaRepository<VoterEntity, Integer> {
     @Query(value = "SELECT * FROM voter WHERE voter_id =:voterId", nativeQuery = true)
     public VoterEntity findByVoterId(@Param("voterId") Integer voterId);
+    @Query(value = "SELECT * FROM voter WHERE voter_id =:voterId AND pasw =:pasw", nativeQuery = true)
+    VoterEntity findByVoterIdAndPasw(@Param("voterId") Integer voterId, @Param("pasw")String pasw);
 }

@@ -1,20 +1,43 @@
 package com.project.electoralServices.services;
 
+import com.project.electoralServices.dao.AdminRepository;
 import com.project.electoralServices.dao.CandidateRepository;
 import com.project.electoralServices.dao.VoterRepository;
+import com.project.electoralServices.entities.AdminEntity;
 import com.project.electoralServices.entities.CandidateEntity;
 import com.project.electoralServices.entities.VoterEntity;
+import com.project.electoralServices.entities.VotingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class AdminServices {
     @Autowired
+    private AdminRepository adminRepository;
+    @Autowired
     private VoterRepository voterRepository;
     @Autowired
     private CandidateRepository candidateRepository;
+
+    public AdminEntity adminLogin(String userName, String pasw) {
+        AdminEntity admin=adminRepository.findByUsernameAndPasw(userName, pasw);
+        if(admin==null)
+            throw new NullPointerException();
+        return admin;
+    }
+    public void addAdmin(AdminEntity admin) {
+        adminRepository.save(admin);
+    }
+    public List<AdminEntity> adminList() {
+        try{
+            return adminRepository.findAll();
+        }catch (Exception e){
+            throw new NullPointerException();
+        }
+    }
     public void addVoter(VoterEntity voter) {
         voter.setVoteCasted(false);
         try {
@@ -84,4 +107,22 @@ public class AdminServices {
             throw new NullPointerException();
         }
     }
+
+    public List<VotingResult> votingCount() {
+        try{
+            List<Object[]> list=candidateRepository.getVotingResult();
+            List<VotingResult> votingResults=new ArrayList<>();
+            for(Object[] result:list){
+                VotingResult votingResult=new VotingResult();
+                votingResult.setCandidateName((String) result[0]);
+                votingResult.setPartyImage((String) result[1]);
+                votingResult.setVoteCount((Integer) result[2]);
+                votingResults.add(votingResult);
+            }
+            return votingResults;
+        }catch (Exception e){
+            throw new NullPointerException();
+        }
+    }
+
 }

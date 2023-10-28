@@ -26,6 +26,7 @@ public class CandidateEntity {
     @NonNull
     private int candidateAge;
     @NonNull
+    @Column(unique = true)
     private String aadharNo;
     private String partyImage;
     private int voteCount;
