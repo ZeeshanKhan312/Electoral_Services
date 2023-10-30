@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "voter")
 @DynamicUpdate
@@ -24,6 +26,9 @@ public class VoterEntity {
     private String DOB;
     @NonNull
     private int voterAge;
+    @NonNull
+    @Column(unique = true,length = 10)
+    private String phoneNo;
     @NonNull
     @Column(unique = true)
     private String aadharNo;

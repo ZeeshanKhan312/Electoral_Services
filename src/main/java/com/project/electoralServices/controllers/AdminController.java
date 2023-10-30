@@ -72,4 +72,9 @@ public class AdminController {
     public List<VotingResult> votingCount(){
         return adminServices.votingCount();
     }
+
+    @PutMapping("/next-election")
+    public void nextElection(){
+        adminServices.nextElection();
+    }
 }

@@ -125,4 +125,17 @@ public class AdminServices {
         }
     }
 
+    public void nextElection() {
+        List<CandidateEntity> candidates=candidateRepository.findAll();
+        for(CandidateEntity candidate:candidates){
+            candidate.setVoteCount(0);
+            candidateRepository.save(candidate);
+        }
+
+        List<VoterEntity> voters=voterRepository.findAll();
+        for(VoterEntity voter: voters){
+            voter.setVoteCasted(false);
+            voterRepository.save(voter);
+        }
+    }
 }

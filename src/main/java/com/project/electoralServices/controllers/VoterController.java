@@ -18,12 +18,12 @@ public class VoterController {
         return voterServices.voterLogin(voterId,pasw);
     }
     @PutMapping("/cast-vote")
-    public void castVote(@RequestParam int voterId, @RequestParam Boolean voteCasted, @RequestParam String candidateName){
-
+    public void castVote(@RequestParam int voterId, @RequestParam int candidateId){
+        voterServices.castVote(voterId,candidateId);
     }
     @PutMapping("/update-details")
-    public void updateVoterDetails(@RequestParam String updateType, @RequestParam String update){
-
+    public void updateVoterDetails(@RequestParam int voterId, @RequestParam String updateType, @RequestParam String update){
+        voterServices.updateVoterDetails(voterId,updateType, update);
     }
     @GetMapping("/voting-result")
     public List<VotingResult> getVotingResult(){
